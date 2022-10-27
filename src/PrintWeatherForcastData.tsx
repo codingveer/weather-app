@@ -1,9 +1,21 @@
-const PrintWeatherForcastData = ({ weatherForecastData }) => {
+import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
+
+type PropData = {
+  weatherIcon: number,
+  temp_max: number,
+  temp_min: number;
+  day: string;
+};
+interface IProps {
+  weatherForecastData: PropData[];
+}
+
+const PrintWeatherForcastData: React.FC<IProps> = ({ weatherForecastData }) => {
   return (
     <>{(weatherForecastData && weatherForecastData.length) &&
       <div className="weatherForecastTable">
         <div className='weatherRow  forecastHeader'>
-          {weatherForecastData.map(data => <span>{data.day}</span>)}
+          {weatherForecastData.map((data) => <span>{data.day}</span>)}
         </div>
         <div className='weatherRow weatherRowIcons'>
           {weatherForecastData.map(data => <span><i className={`wi wi-icon-${data.weatherIcon} weather-main`}></i></span>)}
